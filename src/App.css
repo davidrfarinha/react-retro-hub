@@ -1,38 +1,384 @@
+.colorPalette1 {
+    color: #84d07d;
+    background-color: rgb(132, 208, 125);
+}
+.colorPalette2 {
+    color: #5e785d;
+    background-color: rgb(94, 120, 93);
+}
+.colorPalette3 {
+    color: #555a56;
+    background-color: rgb(85, 90, 86);
+}
+.colorPalette4 {
+    color: #3e4943;
+    background-color: rgb(62, 73, 67);
+}
+.colorPalette5 {
+    color: #252b25;
+    background-color: rgb(37, 43, 37);
+}
+
+* {
+    /* border: 1px solid red; */
+}
+
+@font-face {
+    font-family: "PixelArial";
+    src: url("./assets/PIXEARG_.TTF") format("truetype");
+}
+
+.vt323-regular {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.press-start-2p-regular {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.montserrat-uniquifier {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    /* <uniquifier>: Use a unique and descriptive class name
+    <weight>: Use a value from 100 to 900 */
+}
+
 .App {
-  text-align: center;
+    text-align: center;
+    color: #5e785d;
+    font-family: "Press Start 2P", system-ui;
+    font-style: normal;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav {
+    height: 10dvh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.title-wrapper {
+    display: inline-block;
+    margin-right: auto;
+    margin-left: 5vw;
+}
+nav h1 {
+    font-size: 1rem;
+    width: min-content;
+    padding: 3px;
+    margin: 0;
+    line-height: 1.5;
+    letter-spacing: 0.3rem;
+    text-shadow: -1px 0 rgb(132, 208, 125), 0 1px rgb(132, 208, 125), 1px 0 rgb(132, 208, 125), 0 -1px rgb(132, 208, 125);
+}
+nav > a {
+    width: min-content;
+    font-size: 1rem;
+    margin-right: 0.8rem;
+
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+    padding: 0;
+    color: #84d07d;
+    text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.main-container {
+    /* border: 1px solid #84d07d; */
 }
 
-.App-link {
-  color: #61dafb;
+.hero-wrapper {
+    position: relative;
+    background: rgb(37, 43, 37);
+    background: linear-gradient(180deg, rgba(37, 43, 37, 0.5) 25%, rgba(62, 73, 67, 0.5) 50%, rgba(85, 90, 86, 0.5) 75%, rgba(94, 120, 93, 0.5) 100%);
+}
+.hero-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    z-index: -1;
+}
+.presentation-wrapper {
+    width: 80%;
+    margin: auto;
+}
+.presentation-wrapper p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+.homepage-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #84d07d;
+    color: #252b25;
+    border: 2px solid #252b25;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 0.4rem;
+    padding: 0.2rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.homepage-button:active {
+    background-color: #252b25;
+    color: #84d07d;
+    border: 2px solid #84d07d;
+}
+
+.home-page {
+    display: flex;
+    flex-direction: column;
+    height: 90dvh;
+}
+
+.search-games {
+    height: 90dvh;
+    background: linear-gradient(180deg, rgba(37, 43, 37, 0.5) 25%, rgba(62, 73, 67, 0.5) 50%, rgba(85, 90, 86, 0.5) 75%, rgba(94, 120, 93, 0.5) 100%);
+    background-attachment: fixed;
+    overflow-y: hidden;
+}
+.search-games:hover {
+    overflow-y: auto;
+}
+
+.search-games h2 {
+    width: 70%;
+    margin: 2rem auto;
+    font-size: 1.2rem;
+}
+.search-form label {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.search-form input {
+    background-color: #3e4943;
+    height: 2.5rem;
+    width: 90%;
+    text-align: center;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5rem;
+    color: #84d07d;
+    border: 2px solid #84d07d;
+    border-radius: 20px;
+}
+.search-form input::placeholder {
+    color: #5e785d;
+}
+
+.search-form button {
+    display: block;
+    margin: 15px auto;
+}
+
+.retro-button {
+    background-color: #84d07d;
+    color: #252b25;
+    border: 2px solid #252b25;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 0.5rem;
+    padding: 0.3rem;
+}
+
+.retro-button:active {
+    background-color: #252b25;
+    color: #84d07d;
+    border: 2px solid #84d07d;
+}
+
+.games-list-container {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.game-card {
+    width: 80vw;
+    height: 70vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #252b25;
+    color: #252b25;
+    text-decoration: none;
+    padding: 10px;
+    padding-bottom: 0;
+    box-shadow: 0 0 5px #84d07d;
+    border-radius: 2px;
+}
+.game-card h2 {
+    font-size: 0.7rem;
+    line-height: 1.5;
+    width: 90%;
+    margin: 0;
+    display: block;
+    text-shadow: 0 0 3px #84d07d
+}
+
+.background-image {
+    display: block;
+    width: 100%;
+    object-fit: contain;
+    aspect-ratio: 16/9;
+}
+
+.game-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.game-details h2 {
+    width: 90%;
+    font-size: 1rem;
+}
+.game-details img {
+    width: 70%;
+    margin-bottom: 1rem;
+}
+.game-details p {
+    width: 70%;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin: auto;
+    font-size: 0.8rem;
+    line-height: 2;
+    text-align: justify;
+}
+
+@media (min-width: 480px) {
+
+    nav h1 {
+        font-size: 1.2rem;
+    }
+    nav > a {
+        font-size: 1.2rem;
+        margin-right: 1rem;
+    }
+
+    .game-card {
+        width: 60vw;
+        height: 50vw;
+    }
+
+
+
+
+}
+
+@media (min-width: 768px) {
+    .title-wrapper {
+        margin-left: 5vw;
+    }
+    nav h1 {
+        font-size: 1.3rem;
+        white-space: nowrap;
+        width: 0;
+        width: 100%;
+        overflow: hidden;
+        animation: typing 4s steps(17), cursor 0.4s step-end infinite alternate;
+    }
+    @keyframes cursor {
+        50% {
+            border-color: transparent;
+        }
+    }
+
+    @keyframes typing {
+        from {
+            width: 0;
+            visibility: hidden;
+        }
+        to {
+            width: 100%;
+            visibility: visible;
+        }
+    }
+
+
+    .game-card {
+        width: 40vw;
+        height: 40vw;
+    }
+
+}
+
+@media (min-width: 1024px) {
+    nav {
+        height: 15dvh;
+    }
+
+    nav h1 {
+        border-right: 5px solid;
+        overflow: hidden;
+        animation: typing 4s steps(17), cursor 0.4s step-end infinite alternate;
+    }
+
+
+
+    nav > a {
+        font-size: 1rem;
+        margin-right: 2rem;
+    }
+    .hero-image {
+        aspect-ratio: 5/2;
+    }
+
+    .homepage-button {
+        font-size: 1.2rem;
+        padding: 0.8rem;
+    }
+
+
+    .game-card {
+        width: 30vw;
+        height: 30vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    .home-page {
+        display: flex;
+        background: linear-gradient(180deg, rgba(37, 43, 37, 0.4) 25%, rgba(62, 73, 67, 0.4) 50%, rgba(85, 90, 86, 0.4) 75%, rgba(94, 120, 93, 0.4) 100%);
+    }
+    .hero-image {
+        width: 100%;
+        margin: auto auto;
+        aspect-ratio: 4/3;
+    }
+    nav {
+        height: 15dvh;
+    }
+    .hero-wrapper {
+        height: 85dvh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: none;
+    }
+    .presentation-wrapper p {
+        margin: 50px auto;
+        width: 80%;
+        font-size: 1.5rem;
+    }
+    .search-games {
+        height: 85dvh;
+        background: linear-gradient(180deg, rgba(37, 43, 37, 0.5) 25%, rgba(62, 73, 67, 0.5) 50%, rgba(85, 90, 86, 0.5) 75%, rgba(94, 120, 93, 0.5) 100%);
+        background-attachment: fixed;
+        overflow-y: hidden;
+    }
 }
