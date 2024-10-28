@@ -1,7 +1,7 @@
 import React from "react";
 import GameCard from "../Components/GameCard";
 import { useState, useEffect } from "react";
-import { fetchGames, gamesPlatforms } from "../utils.js/fetchData";
+import { fetchGames } from "../utils.js/fetchData";
 export default function SearchGames() {
     const [searchQuery, setSearchQuery] = useState("");
     const handleChange = (event) => setSearchQuery(event.target.value);

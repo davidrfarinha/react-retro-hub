@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function GameCard(props) {
-    const { name, background_image, released, id, slug } = props.itemData;
+    const { name, background_image, released, slug } = props.itemData;
     const date = new Date(released);
     const yearOfRelease = date.getFullYear();
     return (
