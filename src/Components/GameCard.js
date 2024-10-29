@@ -14,11 +14,15 @@ export default function GameCard(props) {
             <h2>
                 {name} - ({yearOfRelease})
             </h2>
-            <img
-                className="background-image"
-                src={background_image}
-                alt="Game Thumbnail"
-            ></img>
+            {background_image ? (
+                <img
+                    className="background-image"
+                    src={background_image}
+                    alt="Game Thumbnail"
+                ></img>
+            ) : (
+                <p>No image preview available</p>
+            )}
         </Link>
     );
 }

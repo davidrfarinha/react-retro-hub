@@ -15,7 +15,7 @@ export default function Home() {
             <div className="presentation-wrapper">
                 <p>Welcome to the ultimate Game Boy retro gaming destination! </p>
                 <p>Whether you're a nostalgic gamer or a newcomer to the world of retro gaming, we've got you covered with our comprehensive database of Game Boy games. </p>
-                <p>Just don't press Start!</p>
+                <p>Press Start to begin searching.</p>
             </div>
         </div>
     );

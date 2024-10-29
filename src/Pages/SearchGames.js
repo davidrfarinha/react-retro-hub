@@ -26,7 +26,6 @@ export default function SearchGames() {
         if (storedResults) {
             setResults(JSON.parse(storedResults));
         }
-
     }, []);
 
     const gamesList = results.results;
@@ -40,25 +39,34 @@ export default function SearchGames() {
     });
 
     return (
-        <div className="search-games">
-            <h2>Search your favorite Game Boy Games</h2>
-            <form
-                onSubmit={handleSubmit}
-                className="search-form"
-            >
-                {/* <label htmlFor="searchQuery">Type your search</label> */}
-                <input
-                    type="text"
-                    name="searchQuery"
-                    id="searchQuery"
-                    value={searchQuery}
-                    onChange={handleChange}
-                    placeholder="Type your search..."
-                ></input>
-                <button className="retro-button">Search</button>
-            </form>
-            {loadingResults ? <div>Loading...</div> : <div className="games-list-container">
-                <h2>Showing results for: {querySearched}</h2>{gamesListArray}</div>}
-        </div>
+        <>
+            <div className="background-gradient"></div>
+            <div className="search-games">
+                <h2>Search your favorite Game Boy Games</h2>
+                <form
+                    onSubmit={handleSubmit}
+                    className="search-form"
+                >
+                    {/* <label htmlFor="searchQuery">Type your search</label> */}
+                    <input
+                        type="text"
+                        name="searchQuery"
+                        id="searchQuery"
+                        value={searchQuery}
+                        onChange={handleChange}
+                        placeholder="Type your search..."
+                    ></input>
+                    <button className="retro-button">Search</button>
+                </form>
+                {loadingResults ? (
+                    <div>Loading...</div>
+                ) : (
+                    <div className="games-list-container">
+                        <h2>Showing results for: {querySearched}</h2>
+                        {gamesListArray}
+                    </div>
+                )}
+            </div>
+        </>
     );
 }

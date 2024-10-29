@@ -12,16 +12,12 @@ export default function GameDetail() {
             setGameDetails(result);
         });
     }, [slug]);
-    console.log(gameDetails);
-
     if (!gameDetails) {
         return <h1>Loading...</h1>;
     }
-
     const { name, released, background_image, description_raw } = gameDetails;
     const date = new Date(released);
     const yearOfRelease = date.getFullYear();
-
     return (
         <div className="game-details">
             <h2>

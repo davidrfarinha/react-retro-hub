@@ -56,18 +56,29 @@
     font-style: normal;
 }
 
+.background-gradient {
+    position: fixed;
+    top: 12dvh;
+    left: 0;
+    width: 100%;
+    height: 88dvh;
+    background: linear-gradient(180deg, rgba(37, 43, 37, 0.5) 25%, rgba(62, 73, 67, 0.5) 50%, rgba(85, 90, 86, 0.5) 75%, rgba(94, 120, 93, 0.5) 100%);
+    z-index: -1;
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* NAVIGATION BAR STYLES */
 nav {
-    height: 10dvh;
+    height: 12dvh;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .title-wrapper {
-    display: inline-block;
-    margin-right: auto;
-    margin-left: 5vw;
+    margin-left: 2rem;
 }
+
 nav h1 {
     font-size: 1rem;
     width: min-content;
@@ -77,26 +88,65 @@ nav h1 {
     letter-spacing: 0.3rem;
     text-shadow: -1px 0 rgb(132, 208, 125), 0 1px rgb(132, 208, 125), 1px 0 rgb(132, 208, 125), 0 -1px rgb(132, 208, 125);
 }
-nav > a {
+nav a {
+    text-decoration: none;
+}
+
+.links-wrapper {
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar-svg {
+    width: 5vw;
+    height: 5vw;
+    fill:#5e785d;
+}
+
+.navbar-svg svg {
+    width: 100%;
+    height: 100%;
+}
+
+.navbar-svg:hover {
+    fill: #84d07d;
+}
+
+.search {
+}
+
+.navBar-linkText {
+    display: none;
     width: min-content;
     font-size: 1rem;
     margin-right: 0.8rem;
-
     font-family: "VT323", monospace;
     font-weight: 400;
     font-style: normal;
     padding: 0;
-    color: #84d07d;
-    text-decoration: none;
+    color: #5e785d;;
+}
+
+.navBar-linkText:hover {
+    color: #84d07d;;
 }
 
 .main-container {
     /* border: 1px solid #84d07d; */
 }
 
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* HOME PAGE STYLES */
+.home-page {
+    display: flex;
+    flex-direction: column;
+    height: 88dvh;
+}
 .hero-wrapper {
     position: relative;
-    background: rgb(37, 43, 37);
+
     background: linear-gradient(180deg, rgba(37, 43, 37, 0.5) 25%, rgba(62, 73, 67, 0.5) 50%, rgba(85, 90, 86, 0.5) 75%, rgba(94, 120, 93, 0.5) 100%);
 }
 .hero-image {
@@ -107,12 +157,18 @@ nav > a {
     z-index: -1;
 }
 .presentation-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
     width: 80%;
     margin: auto;
 }
 .presentation-wrapper p {
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 0.8rem;
+    line-height: 2;
+    margin: 0;
 }
 .homepage-button {
     position: absolute;
@@ -133,20 +189,37 @@ nav > a {
     border: 2px solid #84d07d;
 }
 
-.home-page {
+
+
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* ABOUT PAGE STYLES */
+
+.about-page {
+    min-height: 88dvh;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    height: 90dvh;
+    justify-content: center;
+    align-items: center;
+
+}
+.about-page p {
+    flex-basis: auto;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: italic;
+    text-align: justify;
+    color: #84d07d;
+    font-size: 0.8rem;
+    width: 70%;
+    margin: 0.8rem auto;
 }
 
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* SEARCH GAMES PAGE STYLES */
 .search-games {
     height: 90dvh;
-    background: linear-gradient(180deg, rgba(37, 43, 37, 0.5) 25%, rgba(62, 73, 67, 0.5) 50%, rgba(85, 90, 86, 0.5) 75%, rgba(94, 120, 93, 0.5) 100%);
-    background-attachment: fixed;
-    overflow-y: hidden;
-}
-.search-games:hover {
-    overflow-y: auto;
 }
 
 .search-games h2 {
@@ -221,12 +294,12 @@ nav > a {
     border-radius: 2px;
 }
 .game-card h2 {
-    font-size: 0.7rem;
+    font-size: 1rem;
     line-height: 1.5;
     width: 90%;
     margin: 0;
     display: block;
-    text-shadow: 0 0 3px #84d07d
+    text-shadow: 0 0 5px #84d07d;
 }
 
 .background-image {
@@ -235,6 +308,13 @@ nav > a {
     object-fit: contain;
     aspect-ratio: 16/9;
 }
+
+.game-card p {
+    color: #5e785d;
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* GAME DETAILS PAGE STYLES */
 
 .game-details {
     display: flex;
@@ -260,8 +340,10 @@ nav > a {
     text-align: justify;
 }
 
-@media (min-width: 480px) {
 
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* MEDIA QUERIES */
+@media (min-width: 480px) {
     nav h1 {
         font-size: 1.2rem;
     }
@@ -270,14 +352,13 @@ nav > a {
         margin-right: 1rem;
     }
 
+    .presentation-wrapper {
+        width: 70%;
+    }
     .game-card {
         width: 60vw;
         height: 50vw;
     }
-
-
-
-
 }
 
 @media (min-width: 768px) {
@@ -309,12 +390,22 @@ nav > a {
         }
     }
 
+    .hero-image {
+        aspect-ratio: 2/1;
+    }
 
     .game-card {
         width: 40vw;
         height: 40vw;
     }
-
+    .links-wrapper {
+        width: 30%;
+    }
+    .navbar-svg {
+        width: 40px;
+        height: 40px;
+        fill:#5e785d;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -327,8 +418,6 @@ nav > a {
         overflow: hidden;
         animation: typing 4s steps(17), cursor 0.4s step-end infinite alternate;
     }
-
-
 
     nav > a {
         font-size: 1rem;
@@ -343,7 +432,6 @@ nav > a {
         padding: 0.8rem;
     }
 
-
     .game-card {
         width: 30vw;
         height: 30vw;
@@ -353,7 +441,6 @@ nav > a {
 @media (min-width: 1200px) {
     .home-page {
         display: flex;
-        background: linear-gradient(180deg, rgba(37, 43, 37, 0.4) 25%, rgba(62, 73, 67, 0.4) 50%, rgba(85, 90, 86, 0.4) 75%, rgba(94, 120, 93, 0.4) 100%);
     }
     .hero-image {
         width: 100%;
@@ -364,21 +451,55 @@ nav > a {
         height: 15dvh;
     }
     .hero-wrapper {
-        height: 85dvh;
         display: flex;
         justify-content: center;
         align-items: center;
         background: none;
     }
     .presentation-wrapper p {
-        margin: 50px auto;
         width: 80%;
         font-size: 1.5rem;
     }
     .search-games {
         height: 85dvh;
-        background: linear-gradient(180deg, rgba(37, 43, 37, 0.5) 25%, rgba(62, 73, 67, 0.5) 50%, rgba(85, 90, 86, 0.5) 75%, rgba(94, 120, 93, 0.5) 100%);
-        background-attachment: fixed;
-        overflow-y: hidden;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    .background-gradient {
+        top: 18dvh;
+    }
+    nav {
+        height: 18dvh;
+    }
+    nav h1 {
+        font-size: 2vw;
+        white-space: nowrap;
+    }
+    .home-page {
+        flex-direction: row;
+        background: linear-gradient(180deg, rgba(37, 43, 37, 0.4) 25%, rgba(62, 73, 67, 0.4) 50%, rgba(85, 90, 86, 0.4) 75%, rgba(94, 120, 93, 0.4) 100%);
+
+        height: 82dvh;
+    }
+    .hero-wrapper,
+    .presentation-wrapper {
+        width: 50%;
+    }
+
+    .hero-image {
+        height: 100%;
+    }
+
+    .presentation-wrapper p {
+        width: 90%;
+        font-size: 1.5vw;
+    }
+
+    .about-page {
+        min-height: 82dvh;
+    }
+    .about-page p {
+
     }
 }
