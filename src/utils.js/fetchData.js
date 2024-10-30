@@ -1,10 +1,6 @@
 async function fetchGames(searchQuery) {
-    console.log("Function is running!");
-    console.log(searchQuery);
     const apiKey = process.env.REACT_APP_API_KEY;
     const xRapidApiKey = process.env.REACT_APP_X_RAPIDAPI_KEY;
-    console.log(apiKey);
-    console.log(xRapidApiKey);
     const url = new URL("https://rawg-video-games-database.p.rapidapi.com/games");
     const searchParams = new URLSearchParams({
         key: apiKey,
