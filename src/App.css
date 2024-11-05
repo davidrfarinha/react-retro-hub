@@ -2,18 +2,22 @@
     color: #84d07d;
     background-color: rgb(132, 208, 125);
 }
+
 .colorPalette2 {
     color: #5e785d;
     background-color: rgb(94, 120, 93);
 }
+
 .colorPalette3 {
     color: #555a56;
     background-color: rgb(85, 90, 86);
 }
+
 .colorPalette4 {
     color: #3e4943;
     background-color: rgb(62, 73, 67);
 }
+
 .colorPalette5 {
     color: #252b25;
     background-color: rgb(37, 43, 37);
@@ -45,8 +49,6 @@
     font-optical-sizing: auto;
     font-weight: <weight>;
     font-style: normal;
-    /* <uniquifier>: Use a unique and descriptive class name
-    <weight>: Use a value from 100 to 900 */
 }
 
 .App {
@@ -54,6 +56,7 @@
     color: #5e785d;
     font-family: "Press Start 2P", system-ui;
     font-style: normal;
+    min-height: 100dvh;
 }
 
 .background-gradient {
@@ -64,11 +67,12 @@
     height: 88dvh;
     background: linear-gradient(180deg, rgba(37, 43, 37, 0.5) 25%, rgba(62, 73, 67, 0.5) 50%, rgba(85, 90, 86, 0.5) 75%, rgba(94, 120, 93, 0.5) 100%);
     z-index: -1;
+    overflow-y: hidden;
 }
 
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-/* NAVIGATION BAR STYLES */
-nav {
+/* .main-navbarIGATION BAR STYLES */
+.main-navbar {
     height: 12dvh;
     display: flex;
     align-items: center;
@@ -79,7 +83,7 @@ nav {
     margin-left: 2rem;
 }
 
-nav h1 {
+.main-navbar h1 {
     font-size: 1rem;
     color: #252b25;
     width: min-content;
@@ -89,7 +93,8 @@ nav h1 {
     letter-spacing: 0.3rem;
     text-shadow: -1px 0 2px rgb(132, 208, 125), 0 1px 2px rgb(132, 208, 125), 1px 0 2px rgb(132, 208, 125), 0 -1px 2px rgb(132, 208, 125);
 }
-nav a {
+
+.main-navbar a {
     text-decoration: none;
 }
 
@@ -102,7 +107,7 @@ nav a {
 .navbar-svg {
     width: 5vw;
     height: 5vw;
-    fill:#5e785d;
+    fill: #5e785d;
 }
 
 .navbar-svg svg {
@@ -114,9 +119,6 @@ nav a {
     fill: #84d07d;
 }
 
-.search {
-}
-
 .navBar-linkText {
     display: none;
     width: min-content;
@@ -126,11 +128,13 @@ nav a {
     font-weight: 400;
     font-style: normal;
     padding: 0;
-    color: #5e785d;;
+    color: #5e785d;
+
 }
 
-.navBar-linkText:hover {
-    color: #84d07d;;
+.main-navbarBar-linkText:hover {
+    color: #84d07d;
+    ;
 }
 
 .main-container {
@@ -145,11 +149,13 @@ nav a {
     flex-direction: column;
     height: 88dvh;
 }
+
 .hero-wrapper {
     position: relative;
 
     background: linear-gradient(180deg, rgba(37, 43, 37, 0.5) 25%, rgba(62, 73, 67, 0.5) 50%, rgba(85, 90, 86, 0.5) 75%, rgba(94, 120, 93, 0.5) 100%);
 }
+
 .hero-image {
     position: relative;
     width: 100%;
@@ -157,6 +163,7 @@ nav a {
     object-fit: cover;
     z-index: -1;
 }
+
 .presentation-wrapper {
     height: 100%;
     display: flex;
@@ -166,11 +173,13 @@ nav a {
     width: 80%;
     margin: auto;
 }
+
 .presentation-wrapper p {
     font-size: 0.8rem;
     line-height: 2;
     margin: 0;
 }
+
 .homepage-button {
     position: absolute;
     top: 50%;
@@ -196,14 +205,17 @@ nav a {
 /* ABOUT PAGE STYLES */
 
 .about-page {
-    min-height: 88dvh;
-    width: 100%;
+    min-width: 400px;
+    max-width: 800px;
+    min-height: 90%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
 }
+
 .about-page p {
     flex-basis: auto;
     font-family: "Montserrat", sans-serif;
@@ -212,7 +224,7 @@ nav a {
     font-style: italic;
     text-align: justify;
     color: #84d07d;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     width: 70%;
     margin: 0.8rem auto;
 }
@@ -220,7 +232,8 @@ nav a {
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* SEARCH GAMES PAGE STYLES */
 .search-games {
-    height: 90dvh;
+    min-height: 90dvh;
+    width: 100%;
 }
 
 .search-games h2 {
@@ -228,6 +241,7 @@ nav a {
     margin: 2rem auto;
     font-size: 1.2rem;
 }
+
 .search-form label {
     display: block;
     margin-bottom: 15px;
@@ -246,6 +260,7 @@ nav a {
     border: 2px solid #84d07d;
     border-radius: 20px;
 }
+
 .search-form input::placeholder {
     color: #5e785d;
 }
@@ -256,12 +271,16 @@ nav a {
 }
 
 .retro-button {
+    display: block;
     background-color: #84d07d;
-    color: #252b25;
-    border: 2px solid #252b25;
+    color: #3e4943;
+    border: 2px solid #3e4943;
+    border-radius: 5px;
     font-family: "Press Start 2P", system-ui;
     font-size: 0.5rem;
-    padding: 0.3rem;
+    padding: 0.5rem;
+    box-shadow: 0 0 5px #84d07d;
+    text-decoration: none;
 }
 
 .retro-button:active {
@@ -270,18 +289,53 @@ nav a {
     border: 2px solid #84d07d;
 }
 
-.games-list-container {
-    margin-top: 1rem;
+.page-navigator {
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.button-container {
+    width: 100px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 20px;
+}
+
+.page-navigator h5 {
+    min-width: 120px;
+}
+.page-navigator button{
+    display: block;
+    width: 100%;
+    height: 2.5rem;
+}
+.page-navigator button span {
+    display: inline-block;
+    width: min-content;
+    text-align: center;
+}
+
+button.right {
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+}
+button.left {
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+}
+
+.games-list-container {
+    margin-top: 1rem;
+
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
 }
 
 .game-card {
-    width: 80vw;
-    height: 70vw;
+    max-width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -289,23 +343,39 @@ nav a {
     background-color: #252b25;
     color: #252b25;
     text-decoration: none;
-    padding: 10px;
-    padding-bottom: 0;
+    padding: 0.5rem;
     box-shadow: 0 0 5px #84d07d;
     border-radius: 2px;
+
 }
+
+.game-card:hover {
+    animation: borderAnimation 0.5s 1 ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes borderAnimation{
+    0% {
+        box-shadow: 0 0 5px #84d07d;
+    }
+    100% {
+        box-shadow: 0 0 30px #84d07d;
+    } 
+
+}
+
 .game-card h2 {
-    font-size: 1rem;
+    font-size: 0.8rem;
     line-height: 1.5;
     width: 90%;
-    margin: 0;
+    margin: 0 0 20px 0;
     display: block;
-    text-shadow: 0 0 5px #84d07d;
+    text-shadow: -1px 0 #84d07d, 0 1px #84d07d, 1px 0 #84d07d, 0 -1px #84d07d;
 }
 
 .background-image {
     display: block;
-    width: 100%;
+    width: 90%;
     object-fit: contain;
     aspect-ratio: 16/9;
 }
@@ -316,39 +386,145 @@ nav a {
 
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* GAME DETAILS PAGE STYLES */
-
-.game-details {
+.details-main-container {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+    position: relative;
+    overflow-y: auto;
 }
-.game-details h2 {
-    width: 90%;
+
+
+.details-top-container {
+    flex-basis: 40%;
+    inset-block-start: 5rem;
+    top: 8rem;
+}
+
+
+.details-top-container a {
+    width: 100px;
+    line-height: 1.2;
+    display: block;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+}
+
+.details-title h2 {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    margin: 1rem 3rem;
+    color: #252b25;
+    text-shadow: -1px 0 #84d07d, 0 1px #84d07d, 1px 0 #84d07d, 0 -1px #84d07d;
+}
+
+.details-title h3 {
     font-size: 1rem;
+    margin: 1.5rem;
+    color: #5e785d;
+    text-shadow: none;
 }
-.game-details img {
-    width: 70%;
-    margin-bottom: 1rem;
+
+.details-title h3 span {
+    display: block;
+    margin: 0.5rem;
 }
-.game-details p {
-    width: 70%;
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
+
+.details-game-thumbnail {
+    width: 80%;
+    margin-bottom: 2rem;
+}
+
+.details-bottom-container {
+    flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.details-bottom-container nav {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: space-evenly;
+    border: 2px solid #5e785d;
+    border-radius: 3px 0 0 0;
+
+
+}
+
+.details-bottom-container nav a {
+    flex-grow: 1;
+    color: #252b25;
+    background-color: #5e785d;
+    text-decoration: none;
+    padding: 1rem;
+    font-size: 1rem;
+    margin: 0;
+    width: auto;
+}
+
+.details-bottom-container nav a.opened-page {
+    color: #84d07d;
+    background-color: #252b25;
+}
+
+.details-bottom-container nav a:active {
+
+    background-color: #84d07d;
+    color: #84d07d;
+    text-shadow: -1px 0 #252b25, 0 1px #252b25, 1px 0 #252b25, 0 -1px #252b25;
+
+
+}
+
+.details-bottom-right-container {
+    border: 2px solid #5e785d;
+    border-top: none;
+}
+
+.overview {
+    margin-top: 3rem;
+}
+.overview p {
+    line-height: 1.5;
+    font-size: 1.2rem;
+    font-family: "VT323", monospace;
+    font-weight: 400;
     font-style: normal;
-    margin: auto;
-    font-size: 0.8rem;
-    line-height: 2;
     text-align: justify;
+    width: 80%;
+    margin: auto;
+    color: #84d07d;
 }
+
+.screenshots-container {
+    margin: 0;
+    width: 100%;
+    display: grid;
+    padding: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.screenshot {
+    width: 100%;
+}
+
+
 
 
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* MEDIA QUERIES */
 @media (min-width: 480px) {
-    nav h1 {
+    .main-navbar h1 {
         font-size: 1.2rem;
     }
-    nav > a {
+
+    .main-navbar>a {
         font-size: 1.2rem;
         margin-right: 1rem;
     }
@@ -356,25 +532,27 @@ nav a {
     .presentation-wrapper {
         width: 70%;
     }
-    .game-card {
-        width: 60vw;
-        height: 50vw;
-    }
+
+
 }
 
 @media (min-width: 768px) {
     .title-wrapper {
         margin-left: 5vw;
     }
-    nav h1 {
+
+    .main-navbar h1 {
         font-size: 1.3rem;
         white-space: nowrap;
         width: 0;
         width: 100%;
         border-right: 5px solid #84d07d;
         overflow: hidden;
-        animation: typing 4s steps(17), cursor 0.4s step-end infinite alternate;
+        animation: typing 2s steps(15), cursor 0.4s step-end infinite alternate;
+        animation-delay: 1s;
+        animation-fill-mode: backwards;
     }
+
     @keyframes cursor {
         50% {
             border-color: transparent;
@@ -386,6 +564,7 @@ nav a {
             width: 0;
             visibility: hidden;
         }
+
         to {
             width: 98%;
             visibility: visible;
@@ -396,33 +575,25 @@ nav a {
         aspect-ratio: 2/1;
     }
 
-    .game-card {
-        width: 40vw;
-        height: 40vw;
-    }
     .links-wrapper {
         width: 30%;
     }
+
     .navbar-svg {
         width: 40px;
         height: 40px;
-        fill:#5e785d;
+        fill: #5e785d;
     }
 }
 
 @media (min-width: 1024px) {
-    nav {
-        height: 15dvh;
-    }
 
-    nav h1 {
 
-    }
-
-    nav > a {
+    .main-navbar>a {
         font-size: 1rem;
         margin-right: 2rem;
     }
+
     .hero-image {
         aspect-ratio: 5/2;
     }
@@ -432,59 +603,66 @@ nav a {
         padding: 0.8rem;
     }
 
-    .game-card {
-        width: 30vw;
-        height: 30vw;
-    }
+
 }
 
 @media (min-width: 1200px) {
     .home-page {
         display: flex;
     }
+
     .hero-image {
         width: 100%;
         margin: auto auto;
         aspect-ratio: 4/3;
     }
-    nav {
-        height: 15dvh;
-    }
-    nav h1 {
+
+
+
+    .main-navbar h1 {
         text-shadow: -1px 0 6px rgb(132, 208, 125), 0 1px 6px rgb(132, 208, 125), 1px 0 6px rgb(132, 208, 125), 0 -1px 6px rgb(132, 208, 125);
     }
+
     .hero-wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
         background: none;
     }
+
     .presentation-wrapper p {
         width: 80%;
         font-size: 1.5rem;
     }
+
     .search-games {
-        height: 85dvh;
+        min-height: 85dvh;
     }
 }
 
 @media only screen and (orientation: landscape) {
     .background-gradient {
-        top: 18dvh;
+        top: 15dvh;
     }
-    nav {
-        height: 18dvh;
+
+    .main-navbar {
+        height: 15dvh;
     }
-    nav h1 {
+
+
+
+    .main-navbar h1 {
         font-size: 2vw;
         white-space: nowrap;
     }
+
     .home-page {
         flex-direction: row;
         background: linear-gradient(180deg, rgba(37, 43, 37, 0.4) 25%, rgba(62, 73, 67, 0.4) 50%, rgba(85, 90, 86, 0.4) 75%, rgba(94, 120, 93, 0.4) 100%);
 
         height: 82dvh;
     }
+
     .hero-wrapper,
     .presentation-wrapper {
         width: 50%;
@@ -493,16 +671,19 @@ nav a {
     .hero-image {
         height: 100%;
     }
+    .search-form input {
+        width: 50%;
+    }
 
     .presentation-wrapper p {
         width: 90%;
         font-size: 1.5vw;
     }
-
-    .about-page {
-        min-height: 82dvh;
+    .details-main-container {
+        flex-direction: row;
     }
-    .about-page p {
-
+    .overview p {
+        font-size: 1.8rem;
     }
+
 }
