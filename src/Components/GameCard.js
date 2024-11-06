@@ -7,7 +7,7 @@ export default function GameCard(props) {
     const yearOfRelease = date.getFullYear();
     return (
         <Link
-            to={`/searchgames/${slug}`}
+            to={`${slug}/overview`}
             className="game-card"
             aria-label={`View details about Game Boy Game ${name}, released in ${yearOfRelease}`}>
             <h2>{name} - ({yearOfRelease})</h2>

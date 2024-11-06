@@ -13,6 +13,19 @@ import GameRatings from "./Pages/GameRatings"
 import GameScreenshots from "./Pages/GameScreenshots";
 
 function App() {
+
+
+
+
+
+
+
+
+
+
+
+
+    
     return (
         <div className="App">
             <Routes>
@@ -22,7 +35,7 @@ function App() {
                     <Route path="searchgames" element={<SearchGames />} >
                         <Route index element={<FormAndResults />} />
                         <Route path=":slug" element={<GameDetailLayout />}>
-                            <Route index element={<GameOverview />} />
+                            <Route index path="overview" element={<GameOverview />} />
                             <Route path="game-info" element={<GameInfo />} />
                             <Route path="ratings" element={<GameRatings />} />
                             <Route path="screenshots" element={<GameScreenshots />} />

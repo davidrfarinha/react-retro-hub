@@ -242,12 +242,12 @@
     font-size: 1.2rem;
 }
 
-.search-form label {
+/* .search-form label {
     display: block;
     margin-bottom: 15px;
-}
+} */
 
-.search-form input {
+.search-query {
     background-color: #3e4943;
     height: 2.5rem;
     width: 90%;
@@ -263,6 +263,24 @@
 
 .search-form input::placeholder {
     color: #5e785d;
+}
+
+.checkboxes-container {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    justify-items: start;
+    margin: auto;
+}
+.individual-checkbox-container {
+    text-align: left;
+    width: 100%;
+}
+.individual-checkbox-container label {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-style: normal;
 }
 
 .search-form button {
@@ -320,9 +338,17 @@ button.right {
     border-right: none;
     border-radius: 5px 0 0 5px;
 }
+button.right:active {
+        border-right: none;
+
+}
 button.left {
     border-left: none;
     border-radius: 0 5px 5px 0;
+}
+button.left:active {
+    border-left: none;
+
 }
 
 .games-list-container {
@@ -671,7 +697,7 @@ button.left {
     .hero-image {
         height: 100%;
     }
-    .search-form input {
+    .search-query {
         width: 50%;
     }
 

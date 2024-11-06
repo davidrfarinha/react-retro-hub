@@ -1,14 +1,17 @@
-async function fetchGames(searchQuery, page) {
+async function fetchGames(searchQuery, page, platforms) {
     const apiKey = process.env.REACT_APP_API_KEY;
     const xRapidApiKey = process.env.REACT_APP_X_RAPIDAPI_KEY;
     const url = new URL("https://rawg-video-games-database.p.rapidapi.com/games");
     const searchParams = new URLSearchParams({
         key: apiKey,
         search: searchQuery,
-        // platforms: "26, 5",
         page: page,
         page_size: 20,
     });
+    if (platforms) {
+        searchParams.set("platforms", platforms);
+    }
+    url.search = searchParams;
     const options = {
         method: "GET",
         headers: {
@@ -16,15 +19,15 @@ async function fetchGames(searchQuery, page) {
             "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com",
         },
     };
-    url.search = searchParams;
     try {
         const response = await fetch(url, options);
-        if (!response.ok) {
+        if (response.ok) {
+            const result = await response.json();
+            return result;
+        } else {
             console.error(response.status);
             console.error(response.statusText);
         }
-        const result = await response.json();
-        return result;
     } catch (error) {
         console.error(error);
     }
@@ -47,10 +50,17 @@ async function fetchGameDetails(slug) {
     };
     try {
         const response = await fetch(url, options);
-        const result = await response.json();
-        return result;
+        if (response.ok) {
+            const result = await response.json();
+            return result;
+        } else {
+            console.error(response.status);
+            console.error(response.statusText);
+        }
+
     } catch (error) {
         console.error(error);
+
     }
 
 }
@@ -74,27 +84,38 @@ async function fetchGamesPlatforms(pageNumber, pageSize) {
     url.search = searchParams.toString();
     try {
         const response = await fetch(url, options);
-        const result = await response.json();
-        return result;
+        console.log(response);
+        if (response.ok) {
+            const result = await response.json();
+            return result;
+        } else {
+            console.error(response.status);
+            console.error(response.statusText);
+        }
     } catch (error) {
         console.error(error);
+        return null;
     }
 }
 
 async function fetchAllGamesPlatforms() {
+    console.log("Fetching platforms!")
     let resultsArray = [];
     const pageSize = 10;
     try {
         const firstFetch = await fetchGamesPlatforms(1, pageSize);
-        console.log(firstFetch);
-        resultsArray = resultsArray.concat(firstFetch.results);
-        const numberOfResults = firstFetch.count;
-        const numberOfMissingFetches = Math.ceil((numberOfResults - pageSize) / pageSize);
-        for (let i = 2; i < (2 + numberOfMissingFetches); i++) {
-            const nextFetch = await fetchGamesPlatforms(i, pageSize);
-            resultsArray = resultsArray.concat(nextFetch.results);
+        if (firstFetch) {
+            resultsArray = resultsArray.concat(firstFetch.results);
+            const numberOfResults = firstFetch.count;
+            const numberOfMissingFetches = Math.ceil((numberOfResults - pageSize) / pageSize);
+            for (let i = 2; i < (2 + numberOfMissingFetches); i++) {
+                const nextFetch = await fetchGamesPlatforms(i, pageSize);
+                if (nextFetch) {
+                    resultsArray = resultsArray.concat(nextFetch.results);
+                }
+            }
+            return resultsArray;
         }
-        return resultsArray;
     } catch (error) {
         console.error(error);
     }
