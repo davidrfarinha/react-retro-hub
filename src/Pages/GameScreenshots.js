@@ -1,11 +1,12 @@
 import React from 'react';
 import { useParams, useOutletContext } from "react-router-dom";
+import PropTypes from 'prop-types';
 export default function GameScreenshots() {
     const param = useParams();
     const location = param.slug;
     const props = useOutletContext();
     const { allResults, currentPage } = props;
-    const currentResultsPage = allResults?.[currentPage - 1]?.results?.results;
+    const currentResultsPage = allResults?.[currentPage]?.results;
     const currentGame = currentResultsPage?.filter(item => item.slug === location);
     const arrayOfThumbnails = currentGame?.[0].short_screenshots.map((item, index) => {
         if (index !== 0) {
@@ -18,7 +19,6 @@ export default function GameScreenshots() {
             );
         }
         return null;
-
     });
 
     return (
@@ -31,4 +31,8 @@ export default function GameScreenshots() {
         </>
 
     );
+}
+GameScreenshots.propTypes = {
+    allResults: PropTypes.object,
+    currentPage: PropTypes.string,
 }

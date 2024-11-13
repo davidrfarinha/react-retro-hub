@@ -13,9 +13,9 @@ export default function Home() {
                 <button className="homepage-button">Press Start</button>
             </div>
             <div className="presentation-wrapper">
-                <p>Welcome to the ultimate Game Boy retro gaming destination! </p>
-                <p>Whether you're a nostalgic gamer or a newcomer to the world of retro gaming, we've got you covered with our comprehensive database of Game Boy games. </p>
-                <p>Press Start to begin searching.</p>
+                <h3>Welcome to the ultimate Game Boy retro gaming destination! </h3>
+                <h3>Whether you're a nostalgic gamer or a newcomer to the world of retro gaming, we've got you covered with our comprehensive database of Game Boy games. </h3>
+                <h3>Press Start to begin searching.</h3>
             </div>
         </div>
     );

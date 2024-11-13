@@ -6,11 +6,9 @@ async function fetchGames(searchQuery, page, platforms) {
         key: apiKey,
         search: searchQuery,
         page: page,
-        page_size: 20,
+        page_size: 40,
+        platforms: platforms
     });
-    if (platforms) {
-        searchParams.set("platforms", platforms);
-    }
     url.search = searchParams;
     const options = {
         method: "GET",
@@ -84,7 +82,6 @@ async function fetchGamesPlatforms(pageNumber, pageSize) {
     url.search = searchParams.toString();
     try {
         const response = await fetch(url, options);
-        console.log(response);
         if (response.ok) {
             const result = await response.json();
             return result;
@@ -99,7 +96,6 @@ async function fetchGamesPlatforms(pageNumber, pageSize) {
 }
 
 async function fetchAllGamesPlatforms() {
-    console.log("Fetching platforms!")
     let resultsArray = [];
     const pageSize = 10;
     try {
@@ -145,8 +141,36 @@ async function fetchGamesPlatformsDetails(id) {
     }
 }
 
+
+async function fetchVideoGamesGenres() {
+    const apiKey = process.env.REACT_APP_API_KEY;
+    const xRapidApiKey = process.env.REACT_APP_X_RAPIDAPI_KEY;
+    const url = new URL(`https://rawg-video-games-database.p.rapidapi.com/genres`);
+    const options = {
+        method: "GET",
+        headers: {
+            "x-rapidapi-key": xRapidApiKey,
+            "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com",
+        },
+    };
+    const searchParams = new URLSearchParams({
+        key: apiKey
+    });
+    url.search = searchParams.toString();
+    try {
+        const response = await fetch(url, options);
+        if (response.ok) {
+            const result = await response.json();
+            return result.results;
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 // async function fetchAllGamesPlatformsDetails() {
 //     const arrayOfPlatforms = await fetchAllGamesPlatforms();
 // }
 
-export { fetchGames, fetchGameDetails, fetchGamesPlatforms, fetchAllGamesPlatforms, fetchGamesPlatformsDetails };
+export { fetchGames, fetchGameDetails, fetchGamesPlatforms, fetchAllGamesPlatforms, fetchGamesPlatformsDetails, fetchVideoGamesGenres };
