@@ -41,7 +41,11 @@
     font-style: normal;
 }
 
-.App {
+* {
+    /* border: 1px solid blue; */
+    /* background-color: rgba(255, 0, 0, 0.4); */
+}
+#root {
     text-align: center;
     color: #5e785d;
     font-family: "Press Start 2P", system-ui;
@@ -58,10 +62,6 @@
     background: linear-gradient(180deg, rgba(37, 43, 37, 0.5) 25%, rgba(62, 73, 67, 0.5) 50%, rgba(85, 90, 86, 0.5) 75%, rgba(94, 120, 93, 0.5) 100%);
     z-index: -1;
     overflow-y: hidden;
-}
-
-* {
-    /* border: 1px solid blue; */
 }
 
 hr {
@@ -108,7 +108,7 @@ p {
 }
 
 .retro-button {
-    display: block;
+    /* display: block; */
     background-color: #84d07d;
     color: #3e4943;
     border: 2px solid #3e4943;
@@ -133,7 +133,7 @@ p {
 /*----------------------------------------------------------------------------------------*/
 /* .NAVIGATION BAR STYLES */
 .main-navbar {
-    height: 12dvh;
+    height: 10dvh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -144,7 +144,7 @@ p {
 }
 
 .main-navbar h1 {
-    font-size: 1rem;
+    font-size: 2.5vw;
     color: #252b25;
     width: min-content;
     padding: 3px;
@@ -164,6 +164,8 @@ p {
     justify-content: space-evenly;
 }
 
+
+
 .navbar-svg {
     width: 5vw;
     height: 5vw;
@@ -175,24 +177,25 @@ p {
     height: 100%;
 }
 
-.navbar-svg:hover {
-    fill: #84d07d;
-}
-
 .navBar-linkText {
     display: none;
     width: min-content;
     font-size: 1rem;
-    margin-right: 0.8rem;
     font-family: "VT323", monospace;
     font-weight: 400;
-    font-style: normal;
-    padding: 0;
+    padding: 0.5rem;
     color: #5e785d;
-
+}
+.navBar-link:hover > * {
+    fill: #84d07d;
+    color: #84d07d;
+    text-decoration: underline;
 }
 
-.main-navbarBar-linkText:hover {
+.is-active .navbar-svg {
+    fill: #84d07d;
+}
+.is-active .navBar-linkText {
     color: #84d07d;
 }
 
@@ -202,12 +205,22 @@ p {
 .home-page {
     display: flex;
     flex-direction: column;
-    height: 88dvh;
+    height: 90dvh;
+    /* background: linear-gradient(180deg, rgba(37, 43, 37, 0.4) 25%, rgba(62, 73, 67, 0.4) 50%, rgba(85, 90, 86, 0.4) 75%, rgba(94, 120, 93, 0.4) 100%); */
 }
 
 .hero-wrapper {
     position: relative;
 }
+.hero-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* darkens the image by 50% */
+  }
 
 .hero-image {
     position: relative;
@@ -258,7 +271,7 @@ p {
 
 .about-page {
     min-width: 400px;
-    max-width: 800px;
+    max-width: 1000px;
     min-height: 90%;
     margin: auto;
     display: flex;
@@ -270,14 +283,12 @@ p {
 
 .about-page p {
     flex-basis: auto;
-    font-family: "Montserrat", sans-serif;
+
     font-optical-sizing: auto;
     font-weight: 400;
-    font-style: italic;
     text-align: justify;
     color: #84d07d;
-    font-size: 0.9rem;
-    width: 70%;
+    width: 80%;
     margin: 0.8rem auto;
 }
 
@@ -291,7 +302,7 @@ p {
 
 .search-games h2 {
     width: 70%;
-    margin: 2rem auto;
+    margin: 1rem auto;
 }
 
 .search-query {
@@ -304,34 +315,190 @@ p {
     font-style: normal;
     font-size: 1.5rem;
     color: #84d07d;
-    border: 2px solid #84d07d;
-    border-radius: 20px;
+    border: 3px outset #84d07d;
+    border-radius: 5px;
     margin-bottom: 1.5rem;
+}
+
+.search-query:focus {
+    border: 3px inset #84d07d;
+    outline: none;
 }
 
 .search-form input::placeholder {
     color: #5e785d;
 }
-
-.checkboxes-container {
-
-    padding: 0.5rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    justify-items: start;
+.advanced-search {
+    width: 90%;
     margin: auto;
 }
+
+.advanced-search-navigation ul {
+    width: 100%;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.active-search-filters {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    column-gap: 2rem;
+    row-gap: 0.5rem;
+}
+.active-search-filters div {
+    display: flex;
+
+}
+.button-wrapper {
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+.active-search-filters h5 {
+    display: inline;
+}
+
+.filter-button {
+    font-weight: bold;
+    color: #84d07d;
+    border: 2px outset #84d07d;
+    padding: 0.3rem;
+    margin-right: 0.5rem;
+    box-shadow: 0px 0px 3px #84d07d;
+    cursor: pointer;
+}
+
+.filter-button:active {
+    border: 2px inset #252b25;
+    background-image: linear-gradient(#84d07d, #5e785d);
+    color: #252b25;
+    box-shadow: 0px 0px 3px #252b25;
+}
+
+.search-by-platforms, .search-by-year {
+    background-image: linear-gradient(#555a56, #3e4943);
+    color: #84d07d;
+    font-weight: bold;
+}
+.search-by-genres, .search-by-rating {
+    background-image: linear-gradient(#3e4943, #252b25);
+    letter-spacing: 0.1rem;
+    color: #84d07d;
+    font-weight: bold;
+}
+
+
+
+.colorPalette1 {
+    color: #84d07d;
+    background-color: rgb(132, 208, 125);
+}
+
+.colorPalette2 {
+    color: #5e785d;
+    background-color: rgb(94, 120, 93);
+}
+
+.colorPalette3 {
+    color: #555a56;
+    background-color: rgb(85, 90, 86);
+}
+
+.colorPalette4 {
+    color: #3e4943;
+    background-color: rgb(62, 73, 67);
+}
+
+.colorPalette5 {
+    color: #252b25;
+    background-color: rgb(37, 43, 37);
+}
+
+
+.navbar-tab {
+    border: 2px solid #84d07d;
+    flex-grow: 1;
+    background-color: #555a56;
+}
+.advanced-search-navigation ul li button {
+    width: 100%;
+    flex-grow: 1;
+    padding: 1rem;
+    background-color: transparent;
+    border: none;
+    color: #84d07d;
+    border-bottom: none;
+    cursor: pointer;
+}
+.active {
+    border-bottom: none;
+    background-color: #252b25;
+}
+/* .advanced-search-navigation ul li button:active {
+    background-color: #84d07d;
+
+} */
+
+.advanced-search-options {
+    background-color: #252b25;
+    border: 2px solid #84d07d;
+    border-top: none;
+    min-height: 350px;
+    width: 100%;
+}
+
+.advanced-search-options h2 {
+    margin: 0;
+}
+
+
+.checkboxes-container {
+    margin: 0 1rem;
+    display: grid;
+    justify-items: stretch;
+    align-items: stretch;
+}
+.platforms {
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+.genres {
+    padding: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.advanced-search-slider {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    padding: 0 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
 
 .individual-checkbox-container {
     text-align: left;
     width: 100%;
 }
+.platforms .individual-checkbox-container {
+    margin-bottom: 0.2rem;
+}
+.genres .individual-checkbox-container {
+    margin-bottom: 1rem;
+}
 
 .individual-checkbox-container label {
     font-family: "Montserrat", sans-serif;
-    font-size: 0.8rem;
-    font-weight: 600;
-    font-style: normal;
+    font-optical-sizing: auto;
+    color: #84d07d;
+    font-size: 0.9rem;
 }
 
 .search-form button {
@@ -340,7 +507,25 @@ p {
 }
 
 /*----------------------------------------------------------------------------------------*/
+/* SEARCH RESULTS STYLES */
+
+.manage-results {
+    display: block;
+    width: 200px;
+
+}
 /* FILTERS STYLES*/
+
+.back-to-search {
+    display: block;
+    width: 10rem;
+}
+a.left {
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+}
+
+
 
 .filters-container {
     width: 90%;
@@ -350,8 +535,8 @@ p {
     justify-items: center;
     grid-template-areas:
         "heading heading"
-        "genre rating"
-        "date date"
+        "genre genre"
+        "date rating"
         "clear-filters clear-filters";
     grid-template-columns: 50% 50%;
     gap: 0.5rem;
@@ -436,7 +621,7 @@ p {
 
 .date-range>p {
     font-family: "Montserrat", sans-serif;
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin: 0.3rem;
     color: #84d07d;
 }
@@ -543,24 +728,14 @@ button.left:active {
     text-decoration: none;
     padding: 0.5rem;
     box-shadow: 0 0 5px #84d07d;
+    transition: box-shadow 0.5s ease-in-out;
     border-radius: 2px;
 
 }
 
 .game-card:hover {
-    animation: borderAnimation 0.5s 1 ease-in-out;
-    animation-fill-mode: forwards;
-}
-
-@keyframes borderAnimation {
-    0% {
-        box-shadow: 0 0 5px #84d07d;
-    }
-
-    100% {
-        box-shadow: 0 0 30px #84d07d;
-    }
-
+    box-shadow: 0 0 30px #84d07d;
+    transition: box-shadow 0.5s ease-in-out;
 }
 
 .game-card h2 {
@@ -706,7 +881,7 @@ button.left:active {
 /* MEDIA QUERIES */
 @media (min-width: 480px) {
     .main-navbar h1 {
-        font-size: 1.2rem;
+        font-size: 1.8vw;
         width: auto;
     }
 
@@ -758,10 +933,6 @@ button.left:active {
         aspect-ratio: 2/1;
     }
 
-    .links-wrapper {
-        width: 30%;
-    }
-
     .navbar-svg {
         width: 30px;
         height: 30px;
@@ -788,7 +959,7 @@ button.left:active {
 
         grid-template-areas:
             "heading heading heading"
-            "genre rating date"
+            "rating genre  date"
             "clear-filters clear-filters clear-filters";
         grid-template-columns: 33% 33% 33%;
     }
@@ -808,12 +979,21 @@ button.left:active {
     .main-navbar h1 {
         text-shadow: -1px 0 6px rgb(132, 208, 125), 0 1px 6px rgb(132, 208, 125), 1px 0 6px rgb(132, 208, 125), 0 -1px 6px rgb(132, 208, 125);
     }
+    
+    .navBar-link {
+        display: flex;
+        align-items: center;
+    }
+    .navBar-linkText {
+        display: inline;
+        font-size: 1.5rem;
+    }
 
     .hero-wrapper {
-        display: flex;
+        /* display: flex;
         justify-content: center;
         align-items: center;
-        background: none;
+        background: none; */
     }
 
     .presentation-wrapper p {
@@ -822,7 +1002,7 @@ button.left:active {
     }
 
     .search-games {
-        min-height: 85dvh;
+        min-height: 80dvh;
     }
 }
 
@@ -834,6 +1014,7 @@ button.left:active {
 
     h3 {
         font-size: 1.2rem;
+        line-height: 2.5;
     }
 
     h4 {
@@ -850,12 +1031,12 @@ button.left:active {
     }
 
     .background-gradient {
-        height: 85dvh;
-        top: 15dvh;
+        height: 88dvh;
+        top: 12dvh;
     }
 
     .main-navbar {
-        height: 15dvh;
+        height: 12dvh;
     }
 
     .main-navbar h1 {
@@ -865,9 +1046,7 @@ button.left:active {
 
     .home-page {
         flex-direction: row;
-        background: linear-gradient(180deg, rgba(37, 43, 37, 0.4) 25%, rgba(62, 73, 67, 0.4) 50%, rgba(85, 90, 86, 0.4) 75%, rgba(94, 120, 93, 0.4) 100%);
-
-        height: 82dvh;
+        height: 88dvh;
     }
 
     .hero-wrapper,
@@ -882,11 +1061,11 @@ button.left:active {
     .search-query {
         width: 50%;
     }
+    .platforms {
 
-    .checkboxes-container {
-        width: 60%;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+    .genres {
+        padding: 5%;
     }
 
     .presentation-wrapper p {

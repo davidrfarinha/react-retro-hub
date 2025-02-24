@@ -1,40 +1,54 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import React from "react";
+import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
+import { useDataContext } from "./Components/DataContextProvider";
+import { assetsLoader } from "./utils/helperFunctions";
 import Layout from "./Components/Layout";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
-import SearchGames from "./Pages/SearchGames";
-import SearchForm from "./Pages/SearchForm"
-import GameDetailLayout from "./Pages/GameDetailLayout";
+import Search from "./Pages/Search"
+import ResultsPage, { loader as resultsLoader } from "./Pages/ResultsPage";
+import DetailLayout from "./Pages/DetailLayout";
 import Contacts from "./Pages/Contacts";
-import GameOverview from "./Pages/GameOverview";
-import GameInfo from "./Pages/GameInfo";
-import GameRatings from "./Pages/GameRatings"
-import GameScreenshots from "./Pages/GameScreenshots";
+import DetailOverview from "./Pages/DetailOverview";
+import DetailInfo from "./Pages/DetailInfo";
+import DetailRatings from "./Pages/DetailRatings"
+import DetailScreenshots from "./Pages/DetailScreenshots";
 import NotFound from "./Pages/NotFound";
 
-function App() {
+export default function App() {
+    const { allResults, handleSetAllResults } = useDataContext();
+    const completeResultsLoaderFunction = () => {
+        return ({ request, params }) => {
+            return resultsLoader({ request, params, allResults, handleSetAllResults });
+        }
+    }
+
+    const router = createBrowserRouter(createRoutesFromElements(
+        <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} loader={assetsLoader} />
+            <Route path="search" element={<Search />} loader={assetsLoader} />
+            <Route
+                path="search/results/:pageNumber"
+                element={<ResultsPage />}
+                loader={completeResultsLoaderFunction()}
+            />
+            <Route
+                path="search/results/:pageNumber/:slug/"
+                element={<DetailLayout />}
+            >
+                <Route index element={<DetailOverview />} />
+                <Route path="game-info" element={<DetailInfo />} />
+                <Route path="ratings" element={<DetailRatings />} />
+                <Route path="screenshots" element={<DetailScreenshots />} />
+            </Route>
+            <Route path="/contacts" element={<Contacts />} />
+            <Route path="*" element={<NotFound />} />
+        </Route>
+    ));
+
     return (
-        <div className="App">
-            <Routes>
-                <Route path="/" element={<Layout />}>
-                    <Route index element={<Home />} />
-                    <Route path="about" element={<About />} />
-                    <Route path="searchgames" element={<SearchGames />} >
-                        <Route index element={<SearchForm />} />
-                        <Route path=":slug" element={<GameDetailLayout />}>
-                            <Route index element={<GameOverview />} />
-                            <Route path="game-info" element={<GameInfo />} />
-                            <Route path="ratings" element={<GameRatings />} />
-                            <Route path="screenshots" element={<GameScreenshots />} />
-                        </Route>
-                    </Route>
-                    <Route path="/contacts" element={<Contacts />} />
-                    <Route path="*" element={<NotFound />} />
-                </Route>
-            </Routes>
-        </div>
+        <RouterProvider router={router} />
     );
 }
-
-export default App;

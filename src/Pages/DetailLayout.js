@@ -1,29 +1,36 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, NavLink, Outlet, useOutletContext, useLocation } from "react-router-dom";
+import { useParams, Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { fetchGameDetails } from "../utils/fetchData";
-import PropTypes from 'prop-types';
 
 export default function GameDetailLayout() {
-    const props = useOutletContext();
-    const { allResults } = props;
-    const [gameDetails, setGameDetails] = useState(null);
     const params = useParams();
     const { slug } = params;
     const location = useLocation();
-    const previousSearch = location.state?.url || "";
-    const searchParameters = new URLSearchParams(previousSearch);
-    const currentPage = searchParameters.get("page");
+    const searchParams = location?.state?.searchParams;
+    const currentGame = location?.state?.currentGame;
+    const [gameDetails, setGameDetails] = useState({});
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        fetchGameDetails(slug).then((result) => {
-            console.log(result);
-            if (result) {
-                setGameDetails(result);
+        if (!Object.keys(gameDetails).length) {
+            async function fetchDetails() {
+                setLoading(true);
+                try {
+                    const fetchedDetails = await fetchGameDetails(slug);
+                    if (fetchedDetails) {
+                        setGameDetails(fetchedDetails);
+                    }
+                } catch (error) {
+                    console.error(error);
+                } finally {
+                    setLoading(false);
+                }
             }
-        });
-    }, [slug]);
+            fetchDetails();
+        } // eslint-disable-next-line
+    }, []);
 
-    if (!gameDetails) {
+    if (loading) {
         return <h1>Loading...</h1>;
     }
     const { name, released, background_image } = gameDetails;
@@ -32,22 +39,27 @@ export default function GameDetailLayout() {
         return (
             <NavLink
                 key={item}
-                to={item !== "overview" ? `${item}` : ""}
+                to={item === "overview" ? "" : `${item}`}
+                state={{ searchParams: searchParams, currentGame: currentGame }}
                 className={({ isActive }) => isActive ? "opened-page" : null}
-                state={{ url: previousSearch }}
-                {...(item === "overview" && {end: true})}
+                {...(item === "overview" && { end: true })}
             >
                 {item}
             </NavLink>);
-    }
-    );
+    });
 
     return (
         <>
             <div className="background-gradient"></div>
             <div className="details-main-container">
                 <div className="details-top-container">
-                    <Link to={`..${previousSearch}`} className="retro-button">Back to search</Link>
+                    <Link
+                        to={`..${searchParams}`}
+                        relative="path"
+                        className="retro-button"
+                    >
+                        Back to results
+                    </Link>
                     <div className="details-title">
                         <h2>{name}</h2>
                         <h3>Released in <span>{released}</span></h3>
@@ -63,14 +75,10 @@ export default function GameDetailLayout() {
                         {arrayOfNavBarLinks}
                     </nav>
                     <div className="details-bottom-right-container">
-                        <Outlet context={{ gameDetails, allResults, currentPage }} />
+                        <Outlet context={{ gameDetails }} />
                     </div>
                 </div>
             </div>
         </>
     );
-}
-
-GameDetailLayout.propTypes = {
-    allResults: PropTypes.object,
 }

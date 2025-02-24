@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { home, about, search, contacts } from "../assets/svgIcons";
 
 
@@ -10,22 +10,34 @@ export default function NavBar() {
                 <h1>Retro Games Hub</h1>
             </div>
             <div className="links-wrapper">
-                <Link to="/" title="Home Page">
+                <NavLink
+                    to="/"
+                    title="Home Page"
+                    className={({ isActive }) => isActive ? "navBar-link is-active" : "navBar-link"}>
                     {home}
                     <p className="navBar-linkText">Home</p>
-                </Link>
-                <Link to="/about" title="About Page">
+                </NavLink>
+                <NavLink
+                    to="/about"
+                    title="About Page"
+                    className={({ isActive }) => isActive ? "navBar-link is-active" : "navBar-link"}>
                     {about}
                     <p className="navBar-linkText">About</p>
-                </Link>
-                <Link to="/searchgames" title="Search Page">
+                </NavLink>
+                <NavLink
+                    to="/search"
+                    title="Search Page"
+                    className={({ isActive }) => isActive ? "navBar-link is-active" : "navBar-link"}>
                     {search}
                     <p className="navBar-linkText">Search</p>
-                </Link>
-                <Link to="/contacts" title="Contacts page">
+                </NavLink>
+                <NavLink
+                    to="/contacts"
+                    title="Contacts page"
+                    className={({ isActive }) => isActive ? "navBar-link is-active" : "navBar-link"}>
                     {contacts}
                     <p className="navBar-linkText">Contacts</p>
-                </Link>
+                </NavLink>
             </div>
 
         </nav>

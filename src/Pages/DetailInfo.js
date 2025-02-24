@@ -3,14 +3,14 @@ import { useOutletContext } from 'react-router';
 
 export default function GameInfo() {
     const { gameDetails } = useOutletContext();
-    const {genres, developers, publishers, tags } = gameDetails;
-    const convertToString = (array) => array.toString().replaceAll(',', ', ');
-    const mapOverArray = (array) => array.map(item => item.name)
-    const gameGenres = convertToString(mapOverArray(genres));
-    const gameDevelopers = convertToString(mapOverArray(developers));
-    const gamePublishers = convertToString(mapOverArray(publishers));
-    const gameTags = convertToString(mapOverArray(tags));
-    const gamePlatforms = convertToString(gameDetails.platforms.map(item => item.platform.name));
+    const { genres, developers, publishers, tags } = gameDetails;
+    const convertArrayToString = (array) => array?.map(item => item.name).toString().replaceAll(',', ', ');
+
+    const gameGenres = convertArrayToString(genres);
+    const gameDevelopers = convertArrayToString(developers);
+    const gamePublishers = convertArrayToString(publishers);
+    const gameTags = convertArrayToString(tags);
+    const gamePlatforms = gameDetails?.platforms?.map(item => item.platform.name).toString().replaceAll(',', ', ');
 
     return (
         <div className='game-info'>

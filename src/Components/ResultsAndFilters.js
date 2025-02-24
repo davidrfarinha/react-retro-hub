@@ -13,6 +13,7 @@ export default function ResultsAndFilters(props) {
     const ratingFilterValue = searchParams.get("rating");
     const dateFilterValue = searchParams.get("date")?.split(",");
 
+    
     useEffect(() => {
         if (gamesList) {
             const allGamesDates = gamesList?.map(item => {
@@ -63,6 +64,9 @@ export default function ResultsAndFilters(props) {
 
 
 
+
+
+
     // Getting the genres of the games in games list;
     const gamesListGenres = gamesList.map(item => item.genres).flat();
     // Extracting the slugs of game genres of previous list;
@@ -92,6 +96,10 @@ export default function ResultsAndFilters(props) {
                 </select>
             </form>
         ));
+    
+    
+    
+    
     const ratings = [1, 2, 3, 4]
     const ratingFilterDropdownMenu = (
         <form className="filter rating">

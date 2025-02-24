@@ -7,7 +7,7 @@ export default function GameOverview() {
 
     return (
         <div className='overview'>
-            {gameDescription.length > 0 ? (<p>{gameDetails.description_raw}</p>) : (<p>No game description available!</p>)}
+            {gameDescription?.length > 0 ? (<p>{gameDetails.description_raw}</p>) : (<p>No game description available!</p>)}
         </div>
     );
 }
