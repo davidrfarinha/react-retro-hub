@@ -1,6 +1,6 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
-import { useDataContext } from "../Components/DataContextProvider";
+// import { useDataContext } from "../Components/DataContextProvider";
 
 export default function About() {
     const assets = useLoaderData();

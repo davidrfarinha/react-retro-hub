@@ -40,7 +40,7 @@ export async function loader({ request, params, allResults, handleSetAllResults 
 
 export default function ResultsPage() {
     const navigate = useNavigate();
-    const { gamePlatforms, gameGenres } = useLoaderData();
+    const { gameGenres } = useLoaderData();
 
     const { allResults } = useDataContext();
     const currentPage = useParams().pageNumber;
@@ -54,7 +54,7 @@ export default function ResultsPage() {
         filters: null
     });
     const handleActiveFilters = value => setActiveFilters(value);
-    
+
     const [showSort, setShowSort] = useState(false);
 
 
@@ -150,10 +150,10 @@ export default function ResultsPage() {
 
     return (
         <div className="results-container">
-            
-            
-            
-            
+
+
+
+
             {/* IMPORTANT: CHANGE THIS TO LINK!!!!!!!!!!!!!!!!!!!!!!!!*/}
             <button
                 onClick={handleBackToSearch}
